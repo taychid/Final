@@ -53,9 +53,25 @@ $(function () {
             url: '/product.html',
             type: 'DELETE',
             success: function(result) {
-                // Do something with the result
+                //Show updated status
+                $("#modalbody").text("Delete product " + pid);
+                $('#alertModal').modal('toggle');
+                // Refresh data
+                getData();
             }
         });
         // ===============================
+        $.ajax({
+            url: url,
+            type: 'PUT',
+            data: editproduct,
+            success: function (result) {
+                //Show updated status
+                $("#modalbody").text("Delete product " + pid);
+                $('#alertModal').modal('toggle');
+                // Refresh data
+                getData();
+            }
+        });
     });
 });

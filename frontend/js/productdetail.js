@@ -61,17 +61,6 @@ $(function () {
             }
         });
         // ===============================
-        $.ajax({
-            url: url,
-            type: 'PUT',
-            data: editproduct,
-            success: function (result) {
-                //Show updated status
-                $("#modalbody").text("Delete product " + pid);
-                $('#alertModal').modal('toggle');
-                // Refresh data
-                getData();
-            }
-        });
+        
     });
 });

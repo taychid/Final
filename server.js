@@ -3,8 +3,8 @@
 var express = require('express');
 // ===============================
 
-var app = express();   
-var cors = require('cors');       
+var app = express();
+var cors = require('cors');
 
 // #2 Add body-parser package to the app
 var bodyParser = require('body-parser');
@@ -18,13 +18,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // #3 Serve static content in folder frontend
-app.get('/', function (req, res) {
-    res.render('frontend/index');
-});
+app.use(express.static('frontend'));
 // ===============================
 
 
-var port = process.env.PORT || 8080; 
+var port = process.env.PORT || 8080;
 
 // ROUTES FOR OUR API
 // =============================================================================
@@ -46,6 +44,8 @@ router.delete('/products/:pid', products.deleteProductById);
 app.use('/api', cors(), router);
 
 // #10 Start the server
-app.listen(8080);
+app.listen(port, function () {
+    console.log('App is running on http://localhost:' + port);
+});
 // ===============================
 console.log('Magic happens on http://localhost:' + port);
